@@ -1,8 +1,15 @@
 /* Page */
 
-* {
-    background-color: #F0E8C8;
-    color: #F34646;
+body {
+    background-color: #ffffff;
+    color: #402f2f;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 
@@ -13,12 +20,146 @@
 }
 
 
-/* Navigation */
+/* Navigation - MOBILE */
 
-header nav li {
-    list-style-type: none;
+header {
+    background-color: indianred;
+    text-align: center;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
 }
 
-a {
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background-color: indianred;
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+nav a {
     text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
 }
+
+nav a:hover {
+    color: tomato;
+}
+
+.nav-toggle:checked~nav {
+    transform: scale(1, 1);
+}
+
+.nav-toggle:checked~nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+
+/* Navigation DESKTOP */
+
+@media screen and (min-width: 800px) {
+    .nav-toggle-label {
+        display: none;
+    }
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 4fr) 1fr;
+    }
+    .logo {
+        grid-column: 1 / 2;
+    }
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    nav a {
+        opacity: 1;
+    }
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+    nav li {
+        margin-left: 3em;
+        margin-bottom: 0;
+    }
+    .submenu {
+        display: none;
+    }
+}
+
+
+/* Hero */
+
+.hero img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+}
+
+
+/* Nyheder section */
